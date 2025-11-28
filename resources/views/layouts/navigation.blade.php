@@ -15,6 +15,16 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('gastos.index')" :active="request()->routeIs('gastos.*')">
+                        {{ __('Gastos') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('ingresos.index')" :active="request()->routeIs('ingresos.*')">
+                        {{ __('Ingresos') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('flujo.index')" :active="request()->routeIs('flujo.*')">
+                        {{ __('Flujo') }}
+                    </x-nav-link>
+                    
                 </div>
             </div>
 
