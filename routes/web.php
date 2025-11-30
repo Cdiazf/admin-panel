@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CompradorController;
 use App\Http\Controllers\GastoController;
+use App\Http\Controllers\PagoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +34,22 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/flujo', function () {
         return view('flujo.index');
     })->name('flujo.index');
+
+    Route::get('/convencion', function () {
+        return view('convencion.index');
+    })->name('convencion.index');
+
+    Route::get('/convencion/compradores', [CompradorController::class, 'index'])
+        ->name('compradores.index');
+
+    Route::post('/convencion/compradores', [CompradorController::class, 'store'])
+        ->name('compradores.store');
+
+    Route::get('/convencion/compradores/{comprador}', [CompradorController::class, 'show'])
+        ->name('compradores.show');
+
+    Route::post('/convencion/pagos', [PagoController::class, 'store'])
+        ->name('pagos.store');
 });
 
 require __DIR__ . '/auth.php';

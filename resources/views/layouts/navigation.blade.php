@@ -24,6 +24,9 @@
                     <x-nav-link :href="route('flujo.index')" :active="request()->routeIs('flujo.*')">
                         {{ __('Flujo') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('compradores.index')" :active="request()->routeIs('compradores.*')">
+                        {{ __('Convencion') }}
+                    </x-nav-link>
                     
                 </div>
             </div>
@@ -77,10 +80,66 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+
+    <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        {{ __('Dashboard') }}
+    </x-responsive-nav-link>
+
+    <x-responsive-nav-link :href="route('gastos.index')" :active="request()->routeIs('gastos.*')">
+        {{ __('Gastos') }}
+    </x-responsive-nav-link>
+
+    <x-responsive-nav-link :href="route('ingresos.index')" :active="request()->routeIs('ingresos.*')">
+        {{ __('Ingresos') }}
+    </x-responsive-nav-link>
+
+    <x-responsive-nav-link :href="route('flujo.index')" :active="request()->routeIs('flujo.*')">
+        {{ __('Flujo de Caja') }}
+    </x-responsive-nav-link>
+
+
+    {{-- -------------------------- --}}
+    {{--   DROPDOWN DE CONVENCIÓN    --}}
+    {{-- -------------------------- --}}
+
+    <div x-data="{ open: false }" class="border-t border-gray-200">
+
+        {{-- Botón del dropdown --}}
+        <button 
+            @click="open = ! open"
+            class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex justify-between items-center"
+        >
+            <span class="font-semibold">Convención</span>
+
+            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" 
+                class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M19 9l-7 7-7-7" />
+            </svg>
+
+            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" 
+                class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M5 15l7-7 7 7" />
+            </svg>
+        </button>
+
+        {{-- Items del dropdown --}}
+        <div x-show="open" class="pl-6 pb-2 space-y-1">
+
+            <x-responsive-nav-link 
+                :href="route('compradores.index')" 
+                :active="request()->routeIs('compradores.*')"
+            >
+                {{ __('Entradas (Compradores)') }}
             </x-responsive-nav-link>
+
         </div>
+
+    </div>
+
+</div>
+
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">

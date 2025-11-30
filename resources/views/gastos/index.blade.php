@@ -141,7 +141,11 @@
                 </div>
 
             @endif
-
+            {{-- Total --}}
+            <div class="mt-4 p-4 bg-gray-50 border rounded-lg text-right">
+                <span class="text-lg font-bold">Total Gastado:</span>
+                <span class="text-xl font-extrabold text-indigo-700">S/ {{ number_format($total, 2) }}</span>
+            </div>
         </div>
     </div>
 

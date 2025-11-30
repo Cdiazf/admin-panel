@@ -11,14 +11,15 @@ class GastoController extends Controller
     public function index(Request $request)
     {
         $eventos = Evento::all();
-
-        // Si se selecciona un evento, cargamos sus gastos
         $gastos = collect();
+
         if ($request->evento_id) {
             $gastos = Gasto::where('evento_id', $request->evento_id)->get();
         }
 
-        return view('gastos.index', compact('eventos', 'gastos'));
+        $total = $gastos->sum('monto');
+
+        return view('gastos.index', compact('eventos', 'gastos', 'total'));
     }
 
     public function store(Request $request)
